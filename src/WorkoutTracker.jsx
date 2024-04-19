@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const data = [
   { name: '12:00', calories: 900 },
@@ -19,18 +19,23 @@ const WorkoutTracker = () => {
       <div className="mb-4 text-center">
         <p className="text-red-500">You've burned fewer calories than yesterday. Time to get moving!</p>
       </div>
-      <LineChart width={300} height={200} data={data} className="mx-auto">
+      <BarChart width={300} height={200} data={data} className="mx-auto">
         <XAxis dataKey="name" />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="calories" stroke="#8884d8" />
-      </LineChart>
+        <Bar dataKey="calories" barSize={5} // set the width of bars
+          // customize the color of bars above 450 calories
+          fill={(value) => value > 450 ? "red" : "#8884d8"} />
+      </BarChart>
       <div className="mt-4">
-        <h2 className="text-xl font-bold mb-2">Upcoming Workout</h2>
+        <div className='flex flex-row justify-between items-center'>
+        <div><h2 className="text-xl font-bold mb-2">Upcoming Workout</h2></div>
+        <div className='text-sm text-gray-500'><a href='#'>see more</a></div>
+        </div>
         <div className="mb-2">
-          <div className="flex items-center">
+          <div className="flex items-center border border-gray-200 rounded-lg p-2 ">
             <img src="full-body-workout-icon.png" alt="Full Body Workout" className="w-8 h-8 mr-2" />
             <div>
               <p>Full Body Workout</p>
