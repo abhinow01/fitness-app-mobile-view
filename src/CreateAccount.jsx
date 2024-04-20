@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FaFacebookF } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const CreateAccount = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -19,12 +21,17 @@ const CreateAccount = () => {
  const navigate = useNavigate();
   const handleNextStep = () => {
     // Implement your logic for handling next step here
-    navigate('/goal-selection');
+    
+    notify();
+    setTimeout(()=>{navigate('/goal-selection');},1000)
     console.log("Next step handler");
   };
+  const notify = ()=> toast('account created successfully !');
+
 
   return (
     <div className="flex flex-col justify-between h-screen">
+      <ToastContainer/>
       <div className='mt-6 py-2 '>
         <div className='flex'>
           <h1 className="text-xl font-bold mb-4 ml-8 mt-4 ">Create an account</h1>

@@ -10,7 +10,7 @@ const TrackYourGoal = () => {
     <div className="flex flex-col  justify-around h-screen">
  <div className='flex flex-row justify-end'>
     <button
-        className="text-underline-offset: auto  text-blue-700 font-bold py-2 px-4 rounded"
+        className="underline  text-blue-300 font-bold py-2 px-4 rounded"
         onClick={handleNextStep}
       >
         Skip

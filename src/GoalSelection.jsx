@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const GoalSelection = () => {
   const [formData, setFormData] = useState({
     goals: []
   });
-
+ const navigate = useNavigate();
   const handleGoalSelection = (selectedGoal) => {
     const isSelected = formData.goals.includes(selectedGoal);
 
@@ -98,7 +99,7 @@ const GoalSelection = () => {
             border: 'none',
             cursor: 'pointer',
           }}
-        onClick={() => console.log('Confirm', formData.goals)}
+        onClick={() => navigate('/workout-tracker') }
       >
         Confirm
       </button>
