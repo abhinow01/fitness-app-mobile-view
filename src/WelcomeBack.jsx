@@ -1,14 +1,34 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { FaFacebookF } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const CreateAccount = () => {
+const WelcomeBack = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  });
     const navigate = useNavigate();
+
     const handleNextStep = ()=>{
-        navigate('/goal-selection');
+        notify();
+        setTimeout(()=>navigate('/goal-selection'),1000);
     }
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    };
+    const notify = ()=> toast('logged in successfully !');
+
   return (
     <div className="flex flex-col justify-between h-screen">
+      <ToastContainer/>
         <div className='mt-6 py-2 '>
       <div className='flex'>
         <h1 className="text-xl font-bold mb-4 ml-8 mt-4 ">Welcome Back </h1>
@@ -80,4 +100,4 @@ const CreateAccount = () => {
   );
 };
 
-export default CreateAccount;
+export default WelcomeBack;

@@ -13,7 +13,8 @@ const CreateAccount = () => {
   });
   
   const navigateToLogin = ()=>{
-    navigate('/welcome-back');
+    setTimeout(()=>{navigate('/welcome-back')},1000)
+    console.log("Next step handler");
   }
 
   const handleInputChange = (e) => {
@@ -28,7 +29,7 @@ const CreateAccount = () => {
   const handleNextStep = () => {
     // Implement your logic for handling next step here
     notify();
-    setTimeout(()=>{navigate('/goal-selection');},1000)
+    setTimeout(()=>{navigate('/goal-selection')},1000)
     console.log("Next step handler");
   };
 
@@ -118,7 +119,7 @@ const CreateAccount = () => {
           </div>
           <div>
             <p className="text-center">
-              Already have an account? <button  className="text-blue-500" onClick={navigateToLogin}>Login</button>
+              Already have an account? <button className="text-blue-500" onClick={navigateToLogin}>Login</button>
             </p>
           </div>
         </div>
