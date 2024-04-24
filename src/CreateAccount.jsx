@@ -4,12 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const CreateAccount = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     password: ''
   });
+  
+  const navigateToLogin = ()=>{
+    navigate('/welcome-back');
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,14 +23,15 @@ const CreateAccount = () => {
       [name]: value
     }));
   };
- const navigate = useNavigate();
+
+ 
   const handleNextStep = () => {
     // Implement your logic for handling next step here
-    
     notify();
     setTimeout(()=>{navigate('/goal-selection');},1000)
     console.log("Next step handler");
   };
+
   const notify = ()=> toast('account created successfully !');
 
 
@@ -112,7 +118,7 @@ const CreateAccount = () => {
           </div>
           <div>
             <p className="text-center">
-              Already have an account? <a href="#" className="text-blue-500" onClick={()=>{navigate('/welcome-back')}}>Login</a>
+              Already have an account? <button  className="text-blue-500" onClick={navigateToLogin}>Login</button>
             </p>
           </div>
         </div>
